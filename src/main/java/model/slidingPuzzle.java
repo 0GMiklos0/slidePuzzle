@@ -32,7 +32,7 @@ public class slidingPuzzle implements State<Moves> {
     }
     public boolean isLegalMove(Moves move){
         int[] theMove = {move.nextMove().card().row(), move.nextMove().card().col()};
-        return tiles[theMove[0]][theMove[1]]==0;
+        return tiles[theMove[0]][theMove[1]]==0 && Arrays.stream(cards).noneMatch(card -> (card.row() == theMove[0] && card.col() == theMove[1]));
     }
 
     public Set<Moves> getLegalMoves(){
